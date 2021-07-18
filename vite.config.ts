@@ -10,4 +10,5 @@ export default defineConfig({
     strictPort: true,
     host: "local.oysterlee.io",
   },
+  assetsInclude: ["json"],
 });

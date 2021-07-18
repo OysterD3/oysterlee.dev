@@ -176,3 +176,5 @@ tags
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,react,macos,vim
 {"mode":"full","isActive":false}
+
+dist
