@@ -15,7 +15,10 @@ const routes: IRoutes[] = Object.keys(pages).map((v) => {
   const name = v.match(/\.\/pages\/(.*)\.tsx$/)?.[1] || "";
   return {
     name,
-    path: name.split("/")[0] === "home" ? name.replace("home", "") : `/${name}`,
+    path: (name.split("/")[0] === "home"
+      ? name.replace("home", "")
+      : `/${name}`
+    ).replace("/index", "/"),
     component: pages[v].default,
   };
 });
@@ -24,6 +27,7 @@ const Routes = () => {
   return (
     <Switch>
       {routes.map(({ path, component: PageComponent }) => {
+        console.log(path);
         return (
           <Route key={path} path={path}>
             <PageComponent />
