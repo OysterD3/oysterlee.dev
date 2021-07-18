@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import HomePage from "./pages/home";
 
 type IRoutes = {
   name: string;
@@ -27,7 +26,6 @@ const Routes = () => {
   return (
     <Switch>
       {routes.map(({ path, component: PageComponent }) => {
-        console.log(path);
         return (
           <Route key={path} path={path}>
             <PageComponent />
