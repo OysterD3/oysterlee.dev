@@ -5,7 +5,7 @@ import App from "./App";
 import "./assets/index.scss";
 import "virtual:windi.css";
 
-ReactDOM.hydrate(
+ReactDOM.render(
   <BrowserRouter>
     <App />
   </BrowserRouter>,

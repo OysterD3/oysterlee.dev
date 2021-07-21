@@ -1,0 +1,19 @@
+.section-header {
+  @apply text-5xl text-center font-medium;
+  @apply mt-5 py-5 px-5;
+
+  span {
+    background-image: linear-gradient(120deg, #28ACE1 0%, #22EFF2 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.6rem;
+    background-position: 0 78%;
+  }
+}
+
+section {
+  @apply p-4;
+}
+
+p {
+  margin-bottom: 1.5rem !important;
+}

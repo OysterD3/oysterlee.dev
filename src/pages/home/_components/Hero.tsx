@@ -11,7 +11,14 @@ const HeroComponent = () => {
       <div id="hero-particle" />
       <div className="title">
         <div>
-          Hello, I&apos;m <span className="name">Oyster Lee</span>
+          Hi, I&apos;m <span className="name">Oyster Lee</span>
+        </div>
+        <div>I&apos;m a Full-Stack Web Developer</div>
+      </div>
+      <div className="sm-title">
+        <div>
+          <div>Hi, I&apos;m</div>
+          <div className="name">Oyster Lee</div>
         </div>
         <div>I&apos;m a Full-Stack Web Developer</div>
       </div>

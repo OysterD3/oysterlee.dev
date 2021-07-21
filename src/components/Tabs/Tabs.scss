@@ -1,0 +1,43 @@
+.tab {
+  position: relative;
+  display: flex;
+  font-size: var(--font-size, 16px);
+  border-top: 2px solid transparent;
+  box-shadow: 0 6px 6px -4px rgba(0, 0, 0, 0.15);
+  &__indicator {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    margin-top: -2px;
+    height: 2px;
+    width: 100px;
+    background: var(--primary);
+    transition: all 0.5s;
+  }
+  nav {
+    padding: 0 15px;
+    white-space: nowrap;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+  }
+  &-item {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    padding: 8px 0;
+    margin-right: 15px;
+    transition: color 0.5s;
+  }
+  &-item__selected {
+    color: var(--primary);
+  }
+}

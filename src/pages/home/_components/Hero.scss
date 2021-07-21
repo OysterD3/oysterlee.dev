@@ -18,18 +18,24 @@ $shrinkTrackball: 0.4;
 $animDuration: 5s;
 
 section#hero {
-  @apply relative z-0;
-  @apply h-screen;
+  @apply h-screen w-screen relative z-0;
   @apply flex flex-col justify-center items-center;
 
-  .title {
-    @apply text-white text-5xl text-center;
-    @apply z-10;
+  .name {
+    @apply text-secondary font-bold text-5xl;
+  }
 
-    div {
-      .name {
-        @apply text-secondary font-bold;
-      }
+  .title {
+    @apply text-white text-4xl text-center;
+    @apply z-10 hidden md:block;
+  }
+
+  .sm-title {
+    @apply z-10 text-white;
+    @apply md:hidden;
+
+    .name {
+      @apply leading-snug
     }
   }
 }
@@ -48,19 +54,19 @@ section#hero {
   );
 }
 
-p {
-  @apply text-sm;
-  margin-top: 60px;
-  letter-spacing: 5px;
-  text-indent: 5px;
-  color: $colorOutline;
-  animation: colorText $animDuration ease-out infinite,
-  nudgeText $animDuration ease-out infinite;
-}
-
 .magic-mouse {
   @apply absolute bottom-5;
   @apply flex flex-col items-center justify-end;
+
+  p {
+    @apply text-sm;
+    margin-top: 10px;
+    letter-spacing: 5px;
+    text-indent: 5px;
+    color: $colorOutline;
+    animation: colorText $animDuration ease-out infinite,
+    nudgeText $animDuration ease-out infinite;
+  }
 }
 
 .mouse {
