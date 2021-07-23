@@ -5,6 +5,7 @@ import Experience from "./_components/Experience";
 import HeroSection from "./_components/Hero";
 import "./index.scss";
 import NavBar from "./_components/NavBar";
+import ProjectsSection from "./_components/Projects";
 
 const HomePage = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -41,6 +42,7 @@ const HomePage = () => {
           <main className="flex-1 relative overflow-y-auto focus:outline-none">
             <AboutSection />
             <Experience />
+            <ProjectsSection />
           </main>
         </div>
       </div>

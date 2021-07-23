@@ -21,6 +21,9 @@ const Experience = () => {
           >
             <ul className="list-disc text-base list-inside space-y-2">
               <li>Assist in various internal and external projects</li>
+              <li>
+                Involved in developing Web Application and Desktop Application
+              </li>
             </ul>
           </Template>
         );
@@ -63,7 +66,7 @@ const Experience = () => {
     },
     {
       title: "Victoria Home",
-      component: function VTapau() {
+      component: function VictoriaHome() {
         return (
           <Template
             designation="Full-Stack Web Developer"
@@ -136,7 +139,15 @@ const Experience = () => {
             from="July 2017"
             to="December 2019"
           >
-            <ul className="list-disc text-base list-inside space-y-2" />
+            <ul className="list-disc text-base list-inside space-y-2">
+              <li>Handle the players&#39; reports, questions, etc...</li>
+              <li>Handling the operation in Southeast Asia</li>
+              <li>Be a driver when the team arrive Malaysia</li>
+              <li>
+                Created a web app for reporting player with PHP, ease
+                everyone&#39;s job
+              </li>
+            </ul>
           </Template>
         );
       },
