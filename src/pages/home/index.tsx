@@ -6,6 +6,7 @@ import HeroSection from "./_components/Hero";
 import "./index.scss";
 import NavBar from "./_components/NavBar";
 import ProjectsSection from "./_components/Projects";
+import SkillSection from "./_components/Skills";
 
 const HomePage = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -43,6 +44,7 @@ const HomePage = () => {
             <AboutSection />
             <Experience />
             <ProjectsSection />
+            <SkillSection />
           </main>
         </div>
       </div>
