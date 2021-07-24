@@ -30,21 +30,6 @@ const Experience = () => {
       },
     },
     {
-      title: "Freelance",
-      component: function Freelance() {
-        return (
-          <Template designation="Freelance" from="December 2019" to="Present">
-            <ul className="list-disc text-base list-inside space-y-2">
-              <li>
-                Successfully completed several Automation jobs with strong
-                customer satisfaction rate
-              </li>
-            </ul>
-          </Template>
-        );
-      },
-    },
-    {
       title: "VTapau",
       component: function VTapau() {
         return (
@@ -154,7 +139,7 @@ const Experience = () => {
     },
   ];
   return (
-    <section id="experience">
+    <section id="experiences">
       <h2 className="section-header">
         <span>Experiences</span>
       </h2>

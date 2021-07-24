@@ -5,9 +5,9 @@ const SkillSection = () => {
   return (
     <section id="skills">
       <h2 className="section-header">
-        <span>Technologies and Tools</span>
+        <span>Skills</span>
       </h2>
-      <div className="grid grid-cols-9 gap-2 md:grid-cols-12">
+      <div className="grid grid-cols-3 sm:grid-cols-5 gap-4 md:gap-2 md:grid-cols-12">
         <SkillTemplate name="Javascript">
           <svg
             className="h-1/2 w-1/2"
@@ -1535,6 +1535,7 @@ const SkillSection = () => {
             </g>
           </svg>
         </SkillTemplate>
+        <div>etc...</div>
       </div>
     </section>
   );

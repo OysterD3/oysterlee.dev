@@ -11,7 +11,7 @@ interface Props {
 
 const ExperienceTemplate: React.FunctionComponent<Props> = (props) => {
   return (
-    <div className="px-4">
+    <div className="px-4 mt-2 md:mt-0">
       <div className="font-bold">
         {props.designation}&nbsp;
         {props.companyName &&
@@ -22,18 +22,20 @@ const ExperienceTemplate: React.FunctionComponent<Props> = (props) => {
               target="_blank"
               rel="noreferrer"
             >
-              @ {props.companyName} ({props.companyState})
+              <br className="md:hidden" />@ {props.companyName} (
+              {props.companyState})
             </a>
           ) : (
             <span>
-              @ {props.companyName} ({props.companyState})
+              <br className="md:hidden" />@ {props.companyName} (
+              {props.companyState})
             </span>
           ))}
       </div>
       <div className="text-sm">
         {props.from} - {props.to}
       </div>
-      <div className="mt-2 max-w-2xl">{props.children}</div>
+      <div className="mt-4 max-w-2xl">{props.children}</div>
     </div>
   );
 };

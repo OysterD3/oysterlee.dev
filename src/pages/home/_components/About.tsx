@@ -7,11 +7,13 @@ const AboutSection = () => {
         <span>About</span>
       </h2>
       <div>
-        <img
-          className="h-48 w-48 rounded-full float-left p-4"
-          src="/oyster.png"
-          alt="photo"
-        />
+        <div className=" md:float-left flex justify-center items-center">
+          <img
+            className="h-32 w-32 md:h-48 md:w-48 rounded-full p-4"
+            src="/oyster.png"
+            alt="photo"
+          />
+        </div>
         <p>
           I love writing code. Ever since I was 13, I use HTML and adobe flash
           to create a website for fun, this passion carried me until today. I am
