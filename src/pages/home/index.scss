@@ -1,5 +1,5 @@
 .section-header {
-  @apply text-5xl text-center font-medium;
+  @apply text-4xl text-center font-medium;
   @apply mt-5 py-5 px-5;
 
   span {
@@ -12,8 +12,36 @@
 
 section {
   @apply p-4;
+
+  &#experiences {
+    height: 30rem;
+  }
 }
 
 p {
   margin-bottom: 1.5rem !important;
+}
+
+.nav-link {
+  @apply group flex items-center px-2 py-2 text-base font-medium rounded-md;
+
+  & svg {
+    @apply mr-4 flex-shrink-0 h-6 w-6;
+  }
+
+  &:not(&__active) svg {
+    @apply text-gray-400 group-hover:text-gray-300;
+  }
+
+  &__active svg {
+    @apply text-gray-300;
+  }
+
+  &:not(&__active) {
+    @apply text-gray-300 hover:bg-gray-700 hover:text-white;
+  }
+
+  &__active {
+    @apply bg-gray-900 text-white;
+  }
 }
