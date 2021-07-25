@@ -1,6 +1,10 @@
 .section-header {
-  @apply text-4xl text-center font-medium;
+  @apply text-3xl text-center font-medium;
   @apply mt-5 py-5 px-5;
+
+  @screen md {
+    @apply text-4xl
+  }
 
   span {
     background-image: linear-gradient(120deg, #28ACE1 0%, #22EFF2 100%);

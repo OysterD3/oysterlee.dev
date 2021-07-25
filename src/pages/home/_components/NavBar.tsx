@@ -84,7 +84,10 @@ const NavBar = ({ showMenu, setShowMenu, menus }: Props) => {
               </Transition>
 
               <div className="flex-shrink-0 flex items-center px-4">
-                <img className="h-8 w-auto" src="/logo.png" alt="Logo" />
+                <div
+                  className="h-8 w-8 bg-cover"
+                  style={{ backgroundImage: "url('/logo.png')" }}
+                />
                 <div className="ml-2 text-white text-sm font-bold">
                   Oyster Lee
                 </div>
@@ -92,6 +95,7 @@ const NavBar = ({ showMenu, setShowMenu, menus }: Props) => {
               <div className="mt-5 flex-1 h-0 overflow-y-auto">
                 <nav className="px-2 space-y-1">
                   <Scrollspy
+                    componentTag="div"
                     items={menus.map((v) => v.hash)}
                     currentClassName="nav-link__active"
                   >
@@ -125,7 +129,10 @@ const NavBar = ({ showMenu, setShowMenu, menus }: Props) => {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex flex-col h-0 flex-1">
             <div className="flex items-center h-16 flex-shrink-0 px-4 bg-gray-900">
-              <img className="h-8 w-auto" src="/logo.png" alt="Logo" />
+              <div
+                className="h-8 w-8 bg-cover"
+                style={{ backgroundImage: "url('/logo.png')" }}
+              />
               <div className="ml-2 text-white text-sm font-bold">
                 Oyster Lee
               </div>
@@ -135,6 +142,7 @@ const NavBar = ({ showMenu, setShowMenu, menus }: Props) => {
                 <Scrollspy
                   items={menus.map((v) => v.hash)}
                   currentClassName="nav-link__active"
+                  componentTag="div"
                 >
                   {menus.map((v) => {
                     const Icon = v.iconPath;

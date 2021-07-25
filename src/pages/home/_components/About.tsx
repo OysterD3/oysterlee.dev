@@ -7,11 +7,10 @@ const AboutSection = () => {
         <span>About</span>
       </h2>
       <div>
-        <div className=" md:float-left flex justify-center items-center">
-          <img
-            className="h-32 w-32 md:h-48 md:w-48 rounded-full p-4"
-            src="/oyster.png"
-            alt="photo"
+        <div className="md:float-left flex p-4 justify-center items-center">
+          <div
+            style={{ backgroundImage: "url('/oyster.png')" }}
+            className="h-32 w-32 md:h-48 md:w-48 rounded-full bg-contain"
           />
         </div>
         <p>

@@ -8,6 +8,7 @@ const Connect = () => {
       </h2>
       <div className="flex space-x-4 md:space-x-10 items-center justify-center">
         <a
+          aria-label="Facebook"
           href="https://www.facebook.com/Oysthree/"
           target="_blank"
           rel="noreferrer"
@@ -32,7 +33,12 @@ const Connect = () => {
             </g>
           </svg>
         </a>
-        <a href="https://github.com/OysterD3" target="_blank" rel="noreferrer">
+        <a
+          aria-label="GitHub"
+          href="https://github.com/OysterD3"
+          target="_blank"
+          rel="noreferrer"
+        >
           <svg
             className="h-10 w-11"
             viewBox="0 0 256 250"
@@ -50,6 +56,7 @@ const Connect = () => {
           </svg>
         </a>
         <a
+          aria-label="Linkedin"
           href="https://www.linkedin.com/in/oysterlee/"
           target="_blank"
           rel="noreferrer"
@@ -70,7 +77,7 @@ const Connect = () => {
             </g>
           </svg>
         </a>
-        <a href="mailto:me@oysterlee.dev">
+        <a href="mailto:me@oysterlee.dev" aria-label="E-mail">
           <svg
             className="w-12 h-10"
             viewBox="0 0 256 193"
