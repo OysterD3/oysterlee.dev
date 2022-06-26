@@ -1,0 +1,137 @@
+// Credits: https://codepen.io/sarazond/pen/LYGbwj
+@function multiple-box-shadow ($n, $color) {
+  $value: '#{random(2000)}px #{random(2000)}px #{$color}';
+  @for $i from 2 through $n {
+    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #{$color}';
+  }
+
+  @return unquote($value)
+}
+
+
+$shadows-small-light: multiple-box-shadow(700, #000);
+$shadows-medium-light: multiple-box-shadow(200, #000);
+$shadows-big-light: multiple-box-shadow(100, #000);
+
+.dark {
+  $shadows-small-dark: multiple-box-shadow(700, #fff);
+  $shadows-medium-dark: multiple-box-shadow(200, #fff);
+  $shadows-big-dark: multiple-box-shadow(100, #fff);
+
+  #stars {
+    background: transparent;
+    box-shadow: $shadows-small-dark;
+
+    &:after {
+      background: transparent;
+      box-shadow: $shadows-small-dark;
+    }
+  }
+
+  #stars2 {
+    background: transparent;
+    box-shadow: $shadows-medium-dark;
+
+    &:after {
+      background: transparent;
+      box-shadow: $shadows-medium-dark;
+    }
+  }
+
+  #stars3 {
+    background: transparent;
+    box-shadow: $shadows-big-dark;
+
+    &:after {
+      background: transparent;
+      box-shadow: $shadows-big-dark;
+    }
+  }
+}
+
+#stars {
+  width: 1px;
+  height: 1px;
+  background: #000;
+  box-shadow: $shadows-small-light;
+  animation: animStar 50s linear infinite;
+
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 1px;
+    height: 1px;
+    background: #000;
+    box-shadow: $shadows-small-light;
+  }
+}
+
+#stars2 {
+  width: 2px;
+  height: 2px;
+  background: #000;
+  box-shadow: $shadows-medium-light;
+  animation: animStar 100s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    background: #000;
+    box-shadow: $shadows-medium-light;
+  }
+}
+
+#stars3 {
+  width: 3px;
+  height: 3px;
+  background: #000;
+  box-shadow: $shadows-big-light;
+  animation: animStar 150s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 3px;
+    height: 3px;
+    background: #000000;
+    box-shadow: $shadows-big-light;
+  }
+}
+
+#title {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+
+  color: #FFF;
+  text-align: center;
+  font-family: 'lato', sans-serif;
+  font-weight: 300;
+  font-size: 50px;
+  letter-spacing: 10px;
+
+  margin-top: -60px;
+  padding-left: 10px;
+
+  span {
+    background: -webkit-linear-gradient(white, #38495a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px)
+  }
+  to {
+    transform: translateY(-2000px)
+  }
+}
