@@ -13,6 +13,7 @@ export default defineNuxtModule({
         .filter(Boolean)
         .sort()
         .forEach((name) => {
+          // @ts-ignore
           eslintConfigs.globals[name] = true;
         });
       const jsonBody = JSON.stringify(eslintConfigs, null, 2);

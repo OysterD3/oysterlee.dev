@@ -1,3 +1,4 @@
+// @ts-ignore
 import { defineTransformer } from '@nuxt/content/transformers';
 import { ParsedContent } from '@nuxt/content/dist/runtime/types';
 
