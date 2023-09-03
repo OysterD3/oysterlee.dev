@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-7xl flex flex-col px-8 mx-auto h-screen">
-    <nav class="w-full bg-slate-950">
+    <nav class="w-full dark:bg-slate-950">
       <div class="max-w-7xl py-6">
         <ul class="flex gap-4 justify-end">
           <li
