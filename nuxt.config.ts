@@ -2,6 +2,14 @@ import { defineNuxtConfig } from 'nuxt/config';
 import TransformerModule from './transformer-module.mjs';
 
 export default defineNuxtConfig({
+  ssr: false,
+  nitro: {
+    preset: 'netlify',
+    prerender: {
+      crawlLinks: true,
+      routes: ['/sitemap.xml', '/robots.txt'],
+    },
+  },
   runtimeConfig: {
     public: {
       appEnv: '',
