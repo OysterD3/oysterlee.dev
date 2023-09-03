@@ -1,8 +1,9 @@
 <template>
   <div class="max-w-7xl flex flex-col px-8 mx-auto h-screen">
     <nav class="w-full dark:bg-slate-950">
-      <div class="max-w-7xl py-6">
-        <ul class="flex gap-4 justify-end">
+      <div class="max-w-7xl py-6 flex justify-between items-center">
+        <NuxtLink to="/" class="dark:text-slate-200 p-2"> OYSTER LEE </NuxtLink>
+        <ul class="flex gap-4">
           <li
             v-for="nav in NAVIGATIONS"
             :key="nav.title"
@@ -10,8 +11,17 @@
           >
             <NuxtLink :to="nav.to"> {{ nav.title }} </NuxtLink>
           </li>
-          <li class="py-2 px-4 cursor-pointer" @click="toggleDark()">
-            <div class="i-heroicons-moon h-6 w-6 text-gray-500" />
+          <li
+            class="p-2 cursor-pointer dark:text-white opacity-70 hover:opacity-100 ease-in-out duration-200"
+            @click="toggleDark()"
+          >
+            <div
+              :class="{
+                'h-6 w-6': true,
+                'i-heroicons-moon': !isDark,
+                'i-heroicons-sun': isDark,
+              }"
+            />
           </li>
         </ul>
       </div>
@@ -41,10 +51,6 @@ const NAVIGATIONS = [
   {
     title: 'Blogs',
     to: '/blogs',
-  },
-  {
-    title: 'Experiences',
-    to: '/experiences',
   },
 ] as const;
 
