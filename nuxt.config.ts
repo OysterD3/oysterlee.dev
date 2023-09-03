@@ -2,6 +2,11 @@ import { defineNuxtConfig } from 'nuxt/config';
 import TransformerModule from './transformer-module.mjs';
 
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      appEnv: '',
+    },
+  },
   css: ['~/assets/styles/content.scss'],
   devtools: { enabled: true },
   modules: [
