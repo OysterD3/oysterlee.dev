@@ -36,7 +36,7 @@ const LABEL_COLOR_MAP = {
 
 const COLOR = {
   [AVAILABLE_COLOR.gray]:
-    'bg-gray-50 text-gray-600 ring-gray-500/10 dark:(bg-gray-400/10 text-gray ring-gray-400/20)',
+    'bg-gray-50 text-gray-600 ring-gray-500/10 dark:(bg-gray-400/10 text-gray-400 ring-gray-400/20)',
   [AVAILABLE_COLOR.red]:
     'bg-red-50 text-red-700 ring-red-600/10 dark:(bg-red-400/10 text-red-400 ring-red-400/20)',
   [AVAILABLE_COLOR.yellow]:

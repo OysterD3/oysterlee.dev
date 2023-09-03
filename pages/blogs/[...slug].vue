@@ -19,8 +19,9 @@
             :label="tag"
           ></BlogTag>
         </div>
-        <h1>
-          {{ data.display ?? data.title }}
+        <h1 class="flex space-x-2 items-center">
+          <LanguageTag>{{ data.language }}</LanguageTag>
+          <span>{{ data.title }}</span>
         </h1>
       </div>
       <div
