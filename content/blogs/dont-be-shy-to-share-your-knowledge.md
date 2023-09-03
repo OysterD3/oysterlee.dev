@@ -1,10 +1,10 @@
 ---
-title: Don't be Shy to Share Your Knowledge - Blogs - 🇲🇾 Oyster Lee
-display: Don't be Shy to Share Your Knowledge
+title: Don't be Shy to Share Your Knowledge
 description: You get knowledge from someone; you share it with someone else.
 image:
   src: https://source.unsplash.com/IBKyH0V3rew
   alt: Photo by @bochelly
+language: en
 head:
   meta:
     - name: 'article:published_time'

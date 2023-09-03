@@ -49,21 +49,28 @@ const { data } = await useAsyncData('blogs', () =>
     .findOne(),
 );
 
+const title =
+  route.path === '/blogs'
+    ? 'Blogs | Oyster Lee'
+    : `${data.value?.title} | Blogs | Oyster Lee`;
+
 useHead({
+  title,
   meta: [
     { name: 'author', content: 'Oyster Lee' },
     { name: 'robots', content: 'index, nofollow' },
+    { name: 'og:title', content: title },
     { name: 'og:url', content: `https://oysterlee.dev${route.path}` },
     { name: 'og:site_name', content: 'Oyster Lee' },
     { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:title', content: title },
     { name: 'twitter:site', content: '@OysteRD3' },
     { name: 'twitter:creator', content: '@OysteRD3' },
     { name: 'twitter:url', content: `https://oysterlee.dev${route.path}` },
     ...(data.value
       ? [
-          { name: 'og:title', content: data.value.title },
+          { name: 'description', content: data.value.description },
           { name: 'og:description', content: data.value.description },
-          { name: 'twitter:title', content: data.value.title },
           { name: 'twitter:description', content: data.value.description },
           { name: 'og:type', content: data.value.list ? 'website' : 'article' },
           ...(data.value.image?.src

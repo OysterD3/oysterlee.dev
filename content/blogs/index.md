@@ -1,6 +1,5 @@
 ---
-title: Blogs - 🇲🇾 Oyster Lee
-display: Blogs
+title: Blogs
 description: "List of blog posts by myself."
 list: true
 ---

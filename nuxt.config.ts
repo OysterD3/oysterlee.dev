@@ -3,12 +3,6 @@ import TransformerModule from './transformer-module.mjs';
 
 export default defineNuxtConfig({
   css: ['~/assets/styles/content.scss'],
-  app: {
-    head: {
-      titleTemplate: (titleChunk) =>
-        titleChunk ? `${titleChunk} | Oyster Lee` : 'Oyster Lee',
-    },
-  },
   devtools: { enabled: true },
   modules: [
     TransformerModule,

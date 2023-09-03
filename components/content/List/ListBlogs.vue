@@ -8,7 +8,7 @@
       <NuxtLink :to="blog._path" class="projects flex">
         <div class="w-4/5 flex flex-col">
           <h3 class="text-3xl font-medium">
-            {{ blog.display }}
+            {{ blog.title }}
           </h3>
           <p class="mt-3 flex-1 dark:text-slate-500">
             {{ blog.description }}
