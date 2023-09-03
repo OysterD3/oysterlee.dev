@@ -2,7 +2,12 @@
   <div class="max-w-7xl flex flex-col px-8 mx-auto h-screen">
     <nav class="w-full dark:bg-slate-950">
       <div class="max-w-7xl py-6 flex justify-between items-center">
-        <NuxtLink to="/" class="dark:text-slate-200 p-2"> OYSTER LEE </NuxtLink>
+        <NuxtLink to="/" class="-my-6">
+          <img
+            :src="isDark ? 'dark-logo.png' : 'light-logo.png'"
+            alt="Oyster Lee"
+          />
+        </NuxtLink>
         <ul class="flex gap-4">
           <li
             v-for="nav in NAVIGATIONS"
@@ -52,6 +57,10 @@ const NAVIGATIONS = [
     title: 'Blogs',
     to: '/blogs',
   },
+  {
+    title: 'CV',
+    to: '/cv',
+  },
 ] as const;
 
 const SOCIAL_MEDIA_LINKS = [
@@ -84,4 +93,14 @@ const isDark = useDark({
   initialValue: usePreferredDark() ? 'dark' : 'light',
 });
 const toggleDark = useToggle(isDark);
+
+const favicon = computed(() =>
+  isDark.value ? 'dark-favicon.ico' : 'light-favicon.ico',
+);
+
+useHead({
+  link: [{ rel: 'icon', href: 'dark-favicon.ico' }],
+});
+
+useFavicon(favicon);
 </script>
