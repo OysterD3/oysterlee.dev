@@ -1,0 +1,195 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import dayjs from 'dayjs';
+import BlogTag from '../../components/BlogTag.vue';
+import LanguageTag from '../../components/LanguageTag.vue';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const allBlogs = await getCollection('blog');
+
+  return allBlogs.map(({ slug }) => ({
+    params: {
+      slug,
+    },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const blogPost = await getEntry('blog', slug);
+
+const { Content } = await blogPost.render();
+
+const calculateReadingTime = (body: string) => {
+  const wordCount = body.split(/\s+/gm).length;
+  const WPM = 238;
+  return Math.ceil(wordCount / WPM);
+};
+
+// const title =
+//   route.path === '/blogs'
+//     ? 'Blogs | Oyster Lee'
+//     : `${data.value?.title} | Blogs | Oyster Lee`;
+//
+// useHead({
+//   title,
+//   meta: [
+//     { name: 'author', content: 'Oyster Lee' },
+//     { name: 'robots', content: 'index, nofollow' },
+//     { name: 'og:title', content: title },
+//     { name: 'og:url', content: `https://oysterlee.dev${route.path}` },
+//     { name: 'og:site_name', content: 'Oyster Lee' },
+//     { name: 'twitter:card', content: 'summary' },
+//     { name: 'twitter:title', content: title },
+//     { name: 'twitter:site', content: '@OysteRD3' },
+//     { name: 'twitter:creator', content: '@OysteRD3' },
+//     { name: 'twitter:url', content: `https://oysterlee.dev${route.path}` },
+//     ...(data.value
+//       ? [
+//           { name: 'description', content: data.value.description },
+//           { name: 'og:description', content: data.value.description },
+//           { name: 'twitter:description', content: data.value.description },
+//           { name: 'og:type', content: data.value.list ? 'website' : 'article' },
+//           ...(data.value.image?.src
+//             ? [
+//                 { name: 'og:image', content: data.value.image.src },
+//                 { name: 'twitter:image', content: data.value.image.src },
+//               ]
+//             : []),
+//         ]
+//       : []),
+//   ],
+// });
+---
+
+<Layout title={`${blogPost.data.title} | Blog | Oyster Lee`}>
+  <article class="md-body">
+    <div class="space-y-4">
+      <div class="flex space-x-4">
+        <div class="dark:text-white dark:text-opacity-40">
+          Published on {
+            dayjs(blogPost.data.publishedDate).format('DD MMM YYYY')
+          }
+        </div>
+        <div>{calculateReadingTime(blogPost.body)} min read</div>
+      </div>
+      <div class="flex flex-wrap gap-4">
+        {blogPost.data.tags.map((tag) => <BlogTag label={tag} client:idle />)}
+      </div>
+      <h1 class="flex space-x-2 items-center">
+        <LanguageTag client:idle>{blogPost.data.language}</LanguageTag>
+        <span>{blogPost.data.title}</span>
+      </h1>
+    </div>
+    {
+      blogPost.data.description && (
+        <div class="dark:text-gray-500 text-2xl">
+          {blogPost.data.description}
+        </div>
+      )
+    }
+    <Content />
+  </article>
+</Layout>
+
+<style lang="scss" is:global>
+  .container {
+    h1 {
+      @apply text-5xl mb-10 font-bold;
+    }
+  }
+
+  .md-body {
+    h1 {
+      @apply text-3xl font-bold;
+    }
+
+    h2 {
+      @apply text-2xl font-bold;
+    }
+
+    h3 {
+      @apply text-xl font-bold;
+    }
+
+    h4 {
+      @apply text-base font-bold;
+    }
+
+    h5 {
+      @apply text-sm font-bold;
+    }
+
+    h6 {
+      @apply text-xs font-bold;
+    }
+
+    strong {
+      @apply dark:text-white;
+    }
+
+    p {
+      @apply dark:text-slate-300 text-base mb-4;
+    }
+
+    a:not(.projects) {
+      text-decoration: none;
+      transition: 150ms all ease-in-out;
+    }
+
+    .router-link-active.router-link-exact-active {
+      @apply dark:text-white;
+    }
+
+    a:not(.projects) {
+      @apply text-sky-700 dark:text-sky-300 border-b border-transparent font-bold;
+    }
+
+    a:not(.projects):hover {
+      @apply dark:text-white dark:border-white;
+      background-color: unset;
+      border-radius: unset;
+    }
+
+    hr {
+      margin: 2rem auto;
+      width: 50%;
+    }
+
+    h2 {
+      @apply mb-3;
+
+      &:nth-child(n + 3) {
+        @apply mt-12;
+      }
+    }
+
+    p:has(+ ol),
+    p:has(+ ul) {
+      @apply mb-0;
+    }
+
+    ul,
+    ol {
+      @apply dark:text-slate-300 space-y-2 p-4;
+    }
+
+    ul {
+      @apply list-disc;
+    }
+
+    ol {
+      @apply list-decimal;
+    }
+
+    h1 > a:not(.projects),
+    h2 > a:not(.projects),
+    h3 > a:not(.projects),
+    h4 > a:not(.projects),
+    h5 > a:not(.projects),
+    h6 > a:not(.projects) {
+      @apply dark:text-inherit border-none;
+    }
+  }
+</style>
