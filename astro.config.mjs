@@ -7,6 +7,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://oysterlee.dev',
   integrations: [vue(), sitemap(), mdx(), UnoCSS({
     injectReset: '@unocss/reset/tailwind.css',
   })]
