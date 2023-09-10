@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
+import ProviderTheme from '../components/Provider/Theme.astro';
 interface Props {
   title: string;
 }
@@ -32,6 +33,7 @@ const { title, isDark } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
+    <ProviderTheme />
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

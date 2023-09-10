@@ -1,0 +1,13 @@
+<script is:inline>
+  if (
+    localStorage.theme === 'dark' ||
+    (!('theme' in localStorage) &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    document.documentElement.setAttribute('color-scheme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.documentElement.classList.remove('color-scheme', 'light');
+    localStorage.setItem('theme', 'light');
+  }
+</script>
