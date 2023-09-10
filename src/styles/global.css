@@ -1,8 +1,8 @@
 ::-webkit-scrollbar,
 ::-webkit-scrollbar-track {
-    @apply bg-transparent;
+    @apply bg-gradient-to-b from-slate-50 to-slate-300 dark:(from-slate-800 to-slate-950);
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 dark:bg-gray-300/20 border-[4px] border-solid border-transparent rounded-full bg-clip-content;
+    @apply bg-gray-400 dark:bg-gray-300/20 border-[4px] border-solid border-transparent rounded-full bg-clip-content;
 }
