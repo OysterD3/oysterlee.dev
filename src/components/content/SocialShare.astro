@@ -1,0 +1,49 @@
+---
+interface Props {
+  url: string;
+  title: string;
+}
+
+const { title, url } = Astro.props;
+
+const SOCIAL_SHARE_LIST = [
+  {
+    social: 'WhatsApp',
+    icon: 'i-ri:whatsapp-fill text-hex-43d854',
+    link: `https://api.whatsapp.com/send?text=${encodeURIComponent(
+      `${title} - ${url}`,
+    )}`,
+  },
+  {
+    social: 'Facebook',
+    icon: 'i-ri:facebook-circle-fill text-hex-3b5998',
+    link: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+  },
+  {
+    social: 'X',
+    icon: 'i-ri:twitter-x-fill text-hex-181919',
+    link: `https://x.com/intent/tweet?text=${encodeURIComponent(
+      `${title} - ${url}`,
+    )}`,
+  },
+  {
+    social: 'LinkedIn',
+    icon: 'i-ri:linkedin-box-fill text-hex-0077b5',
+    link: `https://www.linkedin.com/shareArticle?mini=true&url=${url}`,
+  },
+] as const;
+---
+
+<ul class="social-share flex space-x-4 items-center">
+  {
+    SOCIAL_SHARE_LIST.map((item) => (
+      <li class="rounded-full h-8 w-8 flex items-center justify-center dark:bg-slate-300">
+        <a
+          href={item.link}
+          target="_blank"
+          class:list={['social-share h-6 w-6', item.icon]}
+        />
+      </li>
+    ))
+  }
+</ul>

@@ -2,6 +2,7 @@
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import BlogHeader from '../../components/BlogHeader.astro';
+import SocialShare from '../../components/content/SocialShare.astro';
 
 export async function getStaticPaths() {
   const allBlogs = await getCollection('blog');
@@ -36,7 +37,10 @@ const { Content } = await blogPost.render();
       id={blogPost.id}
       tags={blogPost.data.tags}
       isBlog
-    />
+    >
+      <span>·</span>
+      <SocialShare title={blogPost.data.title} url={Astro.url} />
+    </BlogHeader>
     <Content />
   </article>
 </Layout>
@@ -81,20 +85,16 @@ const { Content } = await blogPost.render();
       @apply dark:text-slate-300 text-base mb-4;
     }
 
-    a:not(.projects) {
+    a:not(.projects):not(.social-share) {
       text-decoration: none;
       transition: 150ms all ease-in-out;
     }
 
-    .router-link-active.router-link-exact-active {
-      @apply dark:text-white;
-    }
-
-    a:not(.projects) {
+    a:not(.projects):not(.social-share) {
       @apply text-sky-700 dark:text-sky-300 border-b border-transparent font-bold;
     }
 
-    a:not(.projects):hover {
+    a:not(.projects):not(.social-share):hover {
       @apply dark:text-white dark:border-white;
       background-color: unset;
       border-radius: unset;
@@ -118,16 +118,16 @@ const { Content } = await blogPost.render();
       @apply mb-0;
     }
 
-    ul,
-    ol {
+    ul:not(.social-share),
+    ol:not(.social-share) {
       @apply dark:text-slate-300 space-y-2 p-4;
     }
 
-    ul {
+    ul:not(.social-share) {
       @apply list-disc;
     }
 
-    ol {
+    ol:not(.social-share) {
       @apply list-decimal;
     }
 
@@ -141,5 +141,3 @@ const { Content } = await blogPost.render();
     }
   }
 </style>
-
-<!--astro-brtjfk5v-1-->
