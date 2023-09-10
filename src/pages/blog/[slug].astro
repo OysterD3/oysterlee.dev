@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 import BlogTag from '../../components/BlogTag.vue';
 import LanguageTag from '../../components/LanguageTag.vue';
 import Layout from '../../layouts/Layout.astro';
+import BlogHeader from '../../components/BlogHeader.astro';
 
 export async function getStaticPaths() {
   const allBlogs = await getCollection('blog');
@@ -35,36 +36,16 @@ const calculateReadingTime = (body: string) => {
   image={blogPost.data.imageSrc}
 >
   <article class="md-body">
-    <div class="space-y-4">
-      <div class="flex space-x-4" transition:name={`${blogPost.id}-date`}>
-        <div class="dark:text-white dark:text-opacity-40">
-          Published on {
-            dayjs(blogPost.data.publishedDate).format('DD MMM YYYY')
-          }
-        </div>
-        <div>{calculateReadingTime(blogPost.body)} min read</div>
-      </div>
-      <div class="flex flex-wrap gap-4" transition:name={`${blogPost.id}-tags`}>
-        {blogPost.data.tags.map((tag) => <BlogTag label={tag} client:idle />)}
-      </div>
-      <h1
-        class="flex space-x-2 items-center"
-        transition:name={`${blogPost.id}-title`}
-      >
-        <LanguageTag client:idle>{blogPost.data.language}</LanguageTag>
-        <span>{blogPost.data.title}</span>
-      </h1>
-    </div>
-    {
-      blogPost.data.description && (
-        <div
-          class="dark:text-gray-500 text-2xl"
-          transition:name={`${blogPost.id}-description`}
-        >
-          {blogPost.data.description}
-        </div>
-      )
-    }
+    <BlogHeader
+      title={blogPost.data.title}
+      publisedDate={blogPost.data.publishedDate}
+      description={blogPost.data.description}
+      body={blogPost.body}
+      language={blogPost.data.language}
+      id={blogPost.id}
+      tags={blogPost.data.tags}
+      isBlog
+    />
     <Content />
   </article>
 </Layout>

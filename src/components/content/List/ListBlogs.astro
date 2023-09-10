@@ -1,15 +1,6 @@
 ---
-import dayjs from 'dayjs';
-import LanguageTag from '../../LanguageTag.vue';
-import BlogTag from '../../BlogTag.vue';
 import type { BlogPostComponentProps } from '../../../../@types';
-
-const calculateReadingTime = (body: string) => {
-  const wordCount = body.split(/\s+/gm).length;
-  const WPM = 238;
-  return Math.ceil(wordCount / WPM);
-};
-
+import BlogHeader from '../../BlogHeader.astro';
 interface Props {
   blogs: BlogPostComponentProps[];
 }
@@ -20,39 +11,18 @@ const { blogs } = Astro.props;
 <ul class="divide-y-1 dark:divide-white">
   {
     blogs.map((blog) => (
-      <li class="hoverable-invert px-4 py-6">
+      <li class="hoverable-invert py-6">
         <a href={`/blog/${blog.slug}`} class="projects flex">
-          <div class="w-4/5 flex flex-col">
-            <h3
-              class="text-3xl font-medium flex items-center space-x-2"
-              transition:name={`${blog.id}-title`}
-            >
-              <LanguageTag client:idle>{blog.language}</LanguageTag>
-              <span>{blog.title}</span>
-            </h3>
-            <p
-              class="mt-3 flex-1 dark:text-slate-500"
-              transition:name={`${blog.id}-description`}
-            >
-              {blog.description}
-            </p>
-            <div
-              class="flex flex-wrap gap-2"
-              transition:name={`${blog.id}-tags`}
-            >
-              {blog.tags.map((tag) => (
-                <BlogTag client:idle label={tag} />
-              ))}
-            </div>
-            <div
-              class="mt-5 justify-self-end flex space-x-4"
-              transition:name={`${blog.id}-date`}
-            >
-              <div class="dark:text-white dark:text-opacity-40">
-                Published on {dayjs(blog.publishedDate).format('DD MMM YYYY')}
-              </div>
-              <div>{calculateReadingTime(blog.body)} min read</div>
-            </div>
+          <div class="w-4/5">
+            <BlogHeader
+              title={blog.title}
+              publisedDate={blog.publishedDate}
+              description={blog.description}
+              body={blog.body}
+              language={blog.language}
+              id={blog.id}
+              tags={blog.tags}
+            />
           </div>
           <img
             class="w-1/5 object-cover rounded-md"

@@ -1,0 +1,49 @@
+---
+import dayjs from 'dayjs';
+import BlogTag from './BlogTag.vue';
+import LanguageTag from './LanguageTag.vue';
+import { calculateReadingTime } from '../utils/calculate-reading-time';
+interface Props {
+  id: string;
+  publishedDate: string;
+  tags: string[];
+  title: string;
+  description?: string;
+  language: string;
+  body: string;
+  isBlog?: boolean;
+}
+
+const { id, publishedDate, tags, title, description, language, body, isBlog } =
+  Astro.props;
+---
+
+<div class="space-y-3" transition:name={`blog-${id}`}>
+  <div>
+    <h1
+      class:list={[
+        'flex space-x-2 items-center',
+        { 'text-2xl font-bold': !isBlog },
+      ]}
+    >
+      <LanguageTag client:idle>{language}</LanguageTag>
+      <span>{title}</span>
+    </h1>
+    {
+      description && (
+        <div class:list={['dark:text-gray-500', { 'text-2xl': isBlog }]}>
+          {description}
+        </div>
+      )
+    }
+  </div>
+  <div class="flex flex-wrap gap-4">
+    {tags.map((tag) => <BlogTag label={tag} client:idle />)}
+  </div>
+  <div class="flex space-x-4">
+    <div class="dark:text-white dark:text-opacity-40">
+      Published on {dayjs(publishedDate).format('DD MMM YYYY')}
+    </div>
+    <div>{calculateReadingTime(body)} min read</div>
+  </div>
+</div>
