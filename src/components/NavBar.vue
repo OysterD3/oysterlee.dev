@@ -3,7 +3,7 @@
     <div class="max-w-7xl py-6 flex justify-between items-center">
       <a href="/" class="-my-6">
         <img
-          :src="isDark ? '/dark-logo.png' : '/light-logo.png'"
+          :src="isDark ? '/dark-logo-64.png' : '/light-logo-64.png'"
           alt="Oyster Lee"
         />
       </a>
@@ -56,7 +56,7 @@ const isDark = useDark({
 const toggleDark = useToggle(isDark);
 
 const favicon = computed(() =>
-  isDark.value ? '/dark-favicon.ico' : '/light-favicon.ico',
+  isDark.value ? '/dark-logo-64.png' : '/light-logo-64.png',
 );
 
 useFavicon(favicon);

@@ -13,7 +13,7 @@ const {
   publishedDate,
 } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = image || new URL('/dark-logo.png', Astro.url).href;
+const socialImageURL = image || new URL('/dark-logo-156.png', Astro.url).href;
 
 const meta = [
   { name: 'title', content: title },
@@ -48,7 +48,7 @@ const meta = [
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
-<link rel="icon" href="/dark-favicon.ico" />
+<link rel="icon" href="/dark-logo-64.png" type="image/png" />
 
 <link rel="canonical" href={canonicalURL} />
 
