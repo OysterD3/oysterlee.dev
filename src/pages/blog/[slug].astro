@@ -1,8 +1,5 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
-import dayjs from 'dayjs';
-import BlogTag from '../../components/BlogTag.vue';
-import LanguageTag from '../../components/LanguageTag.vue';
 import Layout from '../../layouts/Layout.astro';
 import BlogHeader from '../../components/BlogHeader.astro';
 
@@ -21,12 +18,6 @@ const { slug } = Astro.params;
 const blogPost = await getEntry('blog', slug);
 
 const { Content } = await blogPost.render();
-
-const calculateReadingTime = (body: string) => {
-  const wordCount = body.split(/\s+/gm).length;
-  const WPM = 238;
-  return Math.ceil(wordCount / WPM);
-};
 ---
 
 <Layout
@@ -59,7 +50,7 @@ const calculateReadingTime = (body: string) => {
 
   .md-body {
     h1 {
-      @apply text-3xl font-bold;
+      @apply text-4xl font-bold;
     }
 
     h2 {
