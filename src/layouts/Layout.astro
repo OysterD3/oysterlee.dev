@@ -1,0 +1,56 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import NavBar from '../components/NavBar.vue';
+import Footer from '../components/Footer.vue';
+import ProviderTheme from '../components/Provider/Theme.astro';
+import MetaTags from '../components/MetaTags.astro';
+import '../styles/global.css';
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  publishedDate?: string;
+}
+---
+
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-W8KNBSG');
+    </script>
+    <!-- End Google Tag Manager -->
+    <MetaTags {...Astro.props} />
+    <!--<ViewTransitions />-->
+    <ProviderTheme />
+  </head>
+  <body
+    class="min-h-screen bg-fixed bg-gradient-to-b from-slate-50 to-slate-300 text-slate-700 dark:(from-slate-800 to-slate-950 text-slate-300)"
+  >
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W8KNBSG"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="max-w-5xl flex flex-col px-8 mx-auto h-screen">
+      <NavBar client:load />
+      <main class="dark:text-slate-300 py-2 lg:py-6 flex-1">
+        <slot />
+      </main>
+      <Footer client:load />
+    </div>
+  </body>
+</html>

@@ -1,9 +1,11 @@
 {
+  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "types": [
-      "vitest/globals"
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
     ]
-  },
-  // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  }
 }

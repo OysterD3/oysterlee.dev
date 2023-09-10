@@ -1,0 +1,25 @@
+---
+import type { BlogPostComponentProps } from '../../../@types';
+import { getCollection } from 'astro:content';
+import ListBlogs from '../../components/content/List/ListBlogs.astro';
+import Layout from '../../layouts/Layout.astro';
+
+const allBlogPosts = (await getCollection('blog')).map<BlogPostComponentProps>(
+  (v) => ({
+    title: v.data.title,
+    description: v.data.description,
+    slug: v.slug,
+    publishedDate: v.data.publishedDate,
+    imageSrc: v.data.imageSrc,
+    imageAlt: v.data.imageAlt,
+    body: v.body,
+    id: v.id,
+    tags: v.data.tags,
+    language: v.data.language,
+  }),
+);
+---
+
+<Layout title="Blogs | Oyster Lee">
+  <ListBlogs blogs={allBlogPosts} />
+</Layout>

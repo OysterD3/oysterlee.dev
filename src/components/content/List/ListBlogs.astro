@@ -1,0 +1,40 @@
+---
+import type { BlogPostComponentProps } from '../../../../@types';
+import BlogHeader from '../../BlogHeader.astro';
+interface Props {
+  blogs: BlogPostComponentProps[];
+}
+
+const { blogs } = Astro.props;
+---
+
+<ul class="divide-y-1 dark:divide-white">
+  {
+    blogs.map((blog) => (
+      <li class="hoverable-invert py-2 lg:py-6">
+        <a
+          href={`/blog/${blog.slug}`}
+          class="projects flex flex-col-reverse lg:flex-row"
+        >
+          <div class="p-4 bg-slate-300/70 dark:bg-slate-700 lg:dark:bg-transparent lg:bg-transparent rounded-b-md lg:p-0 lg:w-4/5">
+            <BlogHeader
+              title={blog.title}
+              publisedDate={blog.publishedDate}
+              description={blog.description}
+              body={blog.body}
+              language={blog.language}
+              id={blog.id}
+              tags={blog.tags}
+            />
+          </div>
+          <img
+            class="w-full lg:w-1/5 object-cover rounded-t-md lg:rounded-b-md"
+            src={blog.imageSrc}
+            alt={blog.imageAlt}
+            transition:name={blog.imageSrc}
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>

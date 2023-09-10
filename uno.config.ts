@@ -24,19 +24,4 @@ export default defineConfig({
     transformerVariantGroup(),
     transformerDirectives(),
   ],
-  preflights: [
-    {
-      getCSS: ({ theme }) => `
-        html[color-scheme="dark"] body {
-          background-color: ${theme.colors.slate[950]};
-        }
-        html[color-scheme="light"] body {
-          background-color: ${theme.colors.slate[100]};
-        }
-        body {
-          min-height: 100vh;
-        }
-      `,
-    },
-  ],
 });

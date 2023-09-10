@@ -1,0 +1,153 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import BlogHeader from '../../components/BlogHeader.astro';
+import SocialShare from '../../components/content/SocialShare.astro';
+
+export async function getStaticPaths() {
+  const allBlogs = await getCollection('blog');
+
+  return allBlogs.map(({ slug }) => ({
+    params: {
+      slug,
+    },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const blogPost = await getEntry('blog', slug);
+
+const { Content } = await blogPost.render();
+---
+
+<Layout
+  title={`${blogPost.data.title} | Blog | Oyster Lee`}
+  description={blogPost.data.description}
+  publishedDate={blogPost.data.publishedDate}
+  image={blogPost.data.imageSrc}
+>
+  <article class="md-body">
+    <BlogHeader
+      title={blogPost.data.title}
+      publisedDate={blogPost.data.publishedDate}
+      description={blogPost.data.description}
+      body={blogPost.body}
+      language={blogPost.data.language}
+      id={blogPost.id}
+      tags={blogPost.data.tags}
+      isBlog={true}
+    >
+      <span class="hidden lg:inline-block">·</span>
+      <SocialShare
+        class="hidden! lg:flex!"
+        title={blogPost.data.title}
+        url={Astro.url}
+      />
+    </BlogHeader>
+
+    <SocialShare
+      class="mt-3 lg:hidden"
+      title={blogPost.data.title}
+      url={Astro.url}
+    />
+    <Content />
+  </article>
+</Layout>
+
+<style lang="scss" is:global>
+  .container {
+    h1 {
+      @apply text-5xl mb-10 font-bold;
+    }
+  }
+
+  .md-body {
+    h1 {
+      @apply text-3xl lg:text-4xl font-bold;
+    }
+
+    h2 {
+      @apply text-2xl font-bold;
+    }
+
+    h3 {
+      @apply text-xl font-bold;
+    }
+
+    h4 {
+      @apply text-base font-bold;
+    }
+
+    h5 {
+      @apply text-sm font-bold;
+    }
+
+    h6 {
+      @apply text-xs font-bold;
+    }
+
+    strong {
+      @apply dark:text-white;
+    }
+
+    p {
+      @apply dark:text-slate-300 text-base mb-4;
+    }
+
+    a:not(.projects):not(.social-share) {
+      text-decoration: none;
+      transition: 150ms all ease-in-out;
+    }
+
+    a:not(.projects):not(.social-share) {
+      @apply text-sky-700 dark:text-sky-300 border-b border-transparent font-bold;
+    }
+
+    a:not(.projects):not(.social-share):hover {
+      @apply dark:text-white dark:border-white;
+      background-color: unset;
+      border-radius: unset;
+    }
+
+    hr {
+      margin: 2rem auto;
+      width: 50%;
+    }
+
+    h2 {
+      @apply mb-3;
+
+      &:nth-child(n + 3) {
+        @apply mt-12;
+      }
+    }
+
+    p:has(+ ol),
+    p:has(+ ul) {
+      @apply mb-0;
+    }
+
+    ul:not(.social-share),
+    ol:not(.social-share) {
+      @apply dark:text-slate-300 space-y-2 p-4;
+    }
+
+    ul:not(.social-share) {
+      @apply list-disc;
+    }
+
+    ol:not(.social-share) {
+      @apply list-decimal;
+    }
+
+    h1 > a:not(.projects),
+    h2 > a:not(.projects),
+    h3 > a:not(.projects),
+    h4 > a:not(.projects),
+    h5 > a:not(.projects),
+    h6 > a:not(.projects) {
+      @apply dark:text-inherit border-none;
+    }
+  }
+</style>
