@@ -1,7 +1,7 @@
 <template>
   <footer class="flex justify-between py-6">
     <div></div>
-    <ul class="mt-4 flex space-x-lg flex-wrap items-center">
+    <ul class="flex space-x-lg flex-wrap items-center">
       <li
         v-for="link in SOCIAL_MEDIA_LINKS"
         :key="link.icon"
