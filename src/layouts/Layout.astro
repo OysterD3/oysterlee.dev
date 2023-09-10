@@ -3,11 +3,13 @@ import { ViewTransitions } from 'astro:transitions';
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import ProviderTheme from '../components/Provider/Theme.astro';
+import MetaTags from '../components/MetaTags.astro';
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
+  publishedDate?: string;
 }
-
-const { title, isDark } = Astro.props;
 ---
 
 <html lang="en">
@@ -26,12 +28,7 @@ const { title, isDark } = Astro.props;
       })(window, document, 'script', 'dataLayer', 'GTM-W8KNBSG');
     </script>
     <!-- End Google Tag Manager -->
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/dark-favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <MetaTags {...Astro.props} />
     <ViewTransitions />
     <ProviderTheme />
   </head>

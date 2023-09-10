@@ -26,44 +26,14 @@ const calculateReadingTime = (body: string) => {
   const WPM = 238;
   return Math.ceil(wordCount / WPM);
 };
-
-// const title =
-//   route.path === '/blogs'
-//     ? 'Blogs | Oyster Lee'
-//     : `${data.value?.title} | Blogs | Oyster Lee`;
-//
-// useHead({
-//   title,
-//   meta: [
-//     { name: 'author', content: 'Oyster Lee' },
-//     { name: 'robots', content: 'index, nofollow' },
-//     { name: 'og:title', content: title },
-//     { name: 'og:url', content: `https://oysterlee.dev${route.path}` },
-//     { name: 'og:site_name', content: 'Oyster Lee' },
-//     { name: 'twitter:card', content: 'summary' },
-//     { name: 'twitter:title', content: title },
-//     { name: 'twitter:site', content: '@OysteRD3' },
-//     { name: 'twitter:creator', content: '@OysteRD3' },
-//     { name: 'twitter:url', content: `https://oysterlee.dev${route.path}` },
-//     ...(data.value
-//       ? [
-//           { name: 'description', content: data.value.description },
-//           { name: 'og:description', content: data.value.description },
-//           { name: 'twitter:description', content: data.value.description },
-//           { name: 'og:type', content: data.value.list ? 'website' : 'article' },
-//           ...(data.value.image?.src
-//             ? [
-//                 { name: 'og:image', content: data.value.image.src },
-//                 { name: 'twitter:image', content: data.value.image.src },
-//               ]
-//             : []),
-//         ]
-//       : []),
-//   ],
-// });
 ---
 
-<Layout title={`${blogPost.data.title} | Blog | Oyster Lee`}>
+<Layout
+  title={`${blogPost.data.title} | Blog | Oyster Lee`}
+  description={blogPost.data.description}
+  publishedDate={blogPost.data.publishedDate}
+  image={blogPost.data.imageSrc}
+>
   <article class="md-body">
     <div class="space-y-4">
       <div class="flex space-x-4" transition:name={`${blogPost.id}-date`}>
