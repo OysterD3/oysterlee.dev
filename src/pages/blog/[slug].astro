@@ -66,7 +66,7 @@ const calculateReadingTime = (body: string) => {
 <Layout title={`${blogPost.data.title} | Blog | Oyster Lee`}>
   <article class="md-body">
     <div class="space-y-4">
-      <div class="flex space-x-4">
+      <div class="flex space-x-4" transition:name={`${blogPost.id}-date`}>
         <div class="dark:text-white dark:text-opacity-40">
           Published on {
             dayjs(blogPost.data.publishedDate).format('DD MMM YYYY')
@@ -74,17 +74,23 @@ const calculateReadingTime = (body: string) => {
         </div>
         <div>{calculateReadingTime(blogPost.body)} min read</div>
       </div>
-      <div class="flex flex-wrap gap-4">
+      <div class="flex flex-wrap gap-4" transition:name={`${blogPost.id}-tags`}>
         {blogPost.data.tags.map((tag) => <BlogTag label={tag} client:idle />)}
       </div>
-      <h1 class="flex space-x-2 items-center">
+      <h1
+        class="flex space-x-2 items-center"
+        transition:name={`${blogPost.id}-title`}
+      >
         <LanguageTag client:idle>{blogPost.data.language}</LanguageTag>
         <span>{blogPost.data.title}</span>
       </h1>
     </div>
     {
       blogPost.data.description && (
-        <div class="dark:text-gray-500 text-2xl">
+        <div
+          class="dark:text-gray-500 text-2xl"
+          transition:name={`${blogPost.id}-description`}
+        >
           {blogPost.data.description}
         </div>
       )
@@ -193,3 +199,5 @@ const calculateReadingTime = (body: string) => {
     }
   }
 </style>
+
+<!--astro-brtjfk5v-1-->
