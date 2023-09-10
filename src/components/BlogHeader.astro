@@ -34,10 +34,11 @@ const { id, publishedDate, tags, title, description, language, body, isBlog } =
   <div class="flex flex-wrap gap-4">
     {tags.map((tag) => <BlogTag label={tag} client:idle />)}
   </div>
-  <div class="flex space-x-4 text-sm opacity-60">
-    <div>
-      Published on {dayjs(publishedDate).format('DD MMM YYYY')}
-    </div>
-    <div>{calculateReadingTime(body)} min read</div>
+  <div class="flex space-x-2 text-sm opacity-60">
+    <span>
+      {dayjs(publishedDate).format('DD MMM YYYY')}
+    </span>
+    <span>·</span>
+    <span>{calculateReadingTime(body)} min read</span>
   </div>
 </div>
