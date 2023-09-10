@@ -1,7 +1,7 @@
 <template>
   <span
     :class="[
-      'inline-flex text-sm items-center rounded-md px-2 py-1 font-medium ring-1 ring-inset',
+      'inline-flex text-xs md:text-sm items-center rounded-md px-2 py-1 font-medium ring-1 ring-inset',
       COLOR,
     ]"
   >

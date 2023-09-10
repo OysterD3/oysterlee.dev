@@ -36,11 +36,21 @@ const { Content } = await blogPost.render();
       language={blogPost.data.language}
       id={blogPost.id}
       tags={blogPost.data.tags}
-      isBlog
+      isBlog={true}
     >
-      <span>·</span>
-      <SocialShare title={blogPost.data.title} url={Astro.url} />
+      <span class="hidden lg:inline-block">·</span>
+      <SocialShare
+        class="hidden! lg:flex!"
+        title={blogPost.data.title}
+        url={Astro.url}
+      />
     </BlogHeader>
+
+    <SocialShare
+      class="mt-3 lg:hidden"
+      title={blogPost.data.title}
+      url={Astro.url}
+    />
     <Content />
   </article>
 </Layout>
@@ -54,7 +64,7 @@ const { Content } = await blogPost.render();
 
   .md-body {
     h1 {
-      @apply text-4xl font-bold;
+      @apply text-3xl lg:text-4xl font-bold;
     }
 
     h2 {

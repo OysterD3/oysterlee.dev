@@ -2,9 +2,10 @@
 interface Props {
   url: string;
   title: string;
+  class: string;
 }
 
-const { title, url } = Astro.props;
+const { title, url, class: className } = Astro.props;
 
 const SOCIAL_SHARE_LIST = [
   {
@@ -34,7 +35,7 @@ const SOCIAL_SHARE_LIST = [
 ] as const;
 ---
 
-<ul class="social-share flex space-x-4 items-center">
+<ul class:list={[className, 'social-share flex space-x-4 items-center']}>
   {
     SOCIAL_SHARE_LIST.map((item) => (
       <li class="rounded-full h-8 w-8 flex items-center justify-center dark:bg-slate-300">
