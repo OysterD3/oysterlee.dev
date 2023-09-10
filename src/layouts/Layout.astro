@@ -33,7 +33,9 @@ interface Props {
     <ViewTransitions />
     <ProviderTheme />
   </head>
-  <body>
+  <body
+    class="max-w-5xl flex flex-col px-8 mx-auto h-screen bg-fixed dark:(bg-gradient-to-b from-slate-800 to-slate-950)"
+  >
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
@@ -43,12 +45,10 @@ interface Props {
         style="display:none;visibility:hidden"></iframe></noscript
     >
     <!-- End Google Tag Manager (noscript) -->
-    <div class="max-w-7xl flex flex-col px-8 mx-auto h-screen">
-      <NavBar client:load />
-      <main class="dark:text-slate-300 py-6 flex-1">
-        <slot />
-      </main>
-      <Footer client:load />
-    </div>
+    <NavBar client:load />
+    <main class="dark:text-slate-300 py-6 flex-1">
+      <slot />
+    </main>
+    <Footer client:load />
   </body>
 </html>

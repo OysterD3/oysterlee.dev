@@ -1,5 +1,5 @@
 <template>
-  <nav class="w-full dark:bg-slate-950">
+  <nav class="w-full bg-transparent">
     <div class="max-w-7xl py-6 flex justify-between items-center">
       <a href="/" class="-my-6">
         <img
