@@ -1,0 +1,8 @@
+::-webkit-scrollbar,
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-300/20 border-[4px] border-solid border-transparent rounded-full bg-clip-content;
+}
